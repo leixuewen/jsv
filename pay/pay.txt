@@ -1,0 +1,3 @@
+PayPal
+https://openhome.alipay.com/developmentDocument.htm
+https://pay.weixin.qq.com/partner/public/home
