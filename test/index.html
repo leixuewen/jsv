@@ -2,10 +2,73 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=640,user-scalable=no">
     <title>JSV</title>
-    <script src="main/jsv.js"></script>
 </head>
 <body>
+<template>
+    <div style="background: teal" class="expression">
+        <h1>title</h1>
+        <ul>
+            ssss
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        template
+        <pp>POOIFIFI</pp>
+    </div>
+</template>
+<style>
+    body {
+        background: teal;
+    }
+</style>
+<script>
+    let jsv = {
+        el: [
+            {
+                tags: "div",
+                attr: {"style": "background: teal", "class": "expression"},
+                child: [
+                    {tags: "h1", attr: {}, child: []},
+                    {
+                        tags: "ul", attr: {}, child: [
+                            {text: "ssss"},
+                            {tags: "li", attr: {}, child: [{text: "1"}]},
+                            {tags: "li", attr: {}, child: [{text: "2"}]},
+                            {tags: "li", attr: {}, child: [{text: "3"}]},
+                            {tags: "li", attr: {}, child: [{text: "4"}]}
+                        ]
+                    },
+                    {text: "template"},
+                    {tags: "pp", attr: {}, child: [{text: "POOIFIFI"}]}
+                ]
+            },
+        ],
+        css: "body{background:teal}",
+        js: {
+            data: {},
+            methods: {},
+            watch: {},
+            computed: {},
+            beforeMount: () => {
+            },
+            mounted: () => {
+            },
+            beforeDestroy: () => {
+            },
+            destroyed: () => {
+            },
+            beforeCreate: () => {
+            },
+            created: () => {
+            },
+        }
+    }
+
+
+</script>
 </body>
 </html>
