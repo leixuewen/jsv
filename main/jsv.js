@@ -1,4 +1,0 @@
-let jsv = {
-    data:{},
-    method:{},
-};

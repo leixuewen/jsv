@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=640,user-scalable=no">
     <title>JSV</title>
+    <script src="../main/index.js"></script>
 </head>
 <body>
 <template>
@@ -21,7 +22,7 @@
     </div>
 </template>
 <style>
-    body {
+    .expression {
         background: teal;
     }
 </style>
@@ -30,9 +31,9 @@
         el: [
             {
                 tags: "div",
-                attr: {"style": "background: teal", "class": "expression"},
+                attr: {"class": "expression"},
                 child: [
-                    {tags: "h1", attr: {}, child: []},
+                    {tags: "h1", attr: {"@click": "let JJ = 'gg';this.aaa(JJ)"}, child: [{text: "title"}]},
                     {
                         tags: "ul", attr: {}, child: [
                             {text: "ssss"},
@@ -48,16 +49,23 @@
             },
         ],
         css: "/css/index.css",
-        less: "/css/index.less",
-        sass: "/css/index.sass",
+        // less: "/css/index.less",
+        // sass: "/css/index.sass",
         js: {
-            data: {},
-            methods: {},
+            data: {
+                JJ:"GG"
+            },
+            methods: {
+                aaa(val) {
+                    console.info(val, this);
+                }
+            },
             watch: {},
             computed: {},
             beforeMount() {
             },
             mounted() {
+                console.info("mounted",this);
             },
             beforeDestroy() {
             },
@@ -66,13 +74,65 @@
             beforeCreate() {
             },
             created() {
+                console.info("created",this);
             },
             beforeFocus() {
             },
             focused() {
             }
         }
-    }
+    };
+    let a = new JSV(jsv);
+    console.info(a.JJ);
+
+    // function AAA() {
+    //     this.prototype.a="GGGGGGg";
+    // }
+    // let a = new AAA();
+    // console.info(a.a);
+
+    // function aaa() {
+    //     console.info("aaa", this);
+    // }
+    //
+    // function render(el, obj) {
+    //     if (obj.text) {
+    //         el.append(obj.text);
+    //     } else {
+    //         let nel = document.createElement(obj.tags);
+    //         renderAttr(nel, obj.attr);
+    //         renderChild(nel, obj.child);
+    //         el.append(nel);
+    //     }
+    // }
+    //
+    // function renderAttr(el, attr) {
+    //     if (attr) {
+    //         for (let a of Object.keys(attr)) {
+    //             if (a.substring(0, 1) === "@") {
+    //                 el['on' + a.substring(1)] = () => {
+    //                     jsv.js.eval(attr[a]);
+    //                 };
+    //                 continue;
+    //             }
+    //             el.setAttribute(a, attr[a]);
+    //         }
+    //     }
+    // }
+    //
+    // function renderChild(el, child) {
+    //     if (child) {
+    //         for (let c of child) {
+    //             render(el, c);
+    //         }
+    //     }
+    // }
+    //
+    // for (let el of jsv.el) {
+    //     render(document.body, el);
+    //     console.info(el);
+    // }
+
 </script>
 </body>
 </html>
