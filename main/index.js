@@ -1,20 +1,20 @@
 function JSV(jsv) {
-    let _this = this;
-    this.$set = function (obj) {
+    let $ = this;
+    $.$set = function (obj) {
         if (obj) {
             for (let o of Object.keys(obj)) {
                 this[o] = obj[o]
             }
         }
     };
-    this.$render = function (el, obj) {
+    $.$render = function (el, obj) {
         if (obj) {
             for (let o of obj) {
                 renders(el, o);
             }
         }
     };
-    this.$eval = function (val) {
+    $.$eval = function (val) {
         return eval(val);
     };
 
@@ -24,7 +24,7 @@ function JSV(jsv) {
         } else {
             let nel = document.createElement(obj.tags);
             renderAttr(nel, obj.attr);
-            _this.$render(nel, obj.child);
+            $.$render(nel, obj.child);
             el.append(nel);
         }
     }
@@ -35,7 +35,7 @@ function JSV(jsv) {
                 if (a.substring(0, 1) === "@") {
                     let event = a.substring(1);
                     el["on" + event] = function () {
-                        _this.$eval(attr[a])
+                        $.$eval(attr[a])
                     };
                     continue;
                 }
@@ -46,19 +46,19 @@ function JSV(jsv) {
 
 
     for (let i of Object.keys(jsv.js)) {
-        this[i] = jsv.js[i]
+        $[i] = jsv.js[i]
     }
-    this.$set(this.data);
-    this.$set(this.methods);
+    $.$set(this.data);
+    $.$set(this.methods);
 
     let el = document.createElement("div");
-    this.$render(el, jsv.el);
-    if (this.created) {
-        this.created();
+    $.$render(el, jsv.el);
+    if ($.created) {
+        $.created();
     }
     document.body.append(el);
-    if (this.mounted) {
-        this.mounted();
+    if ($.mounted) {
+        $.mounted();
     }
 }
 
